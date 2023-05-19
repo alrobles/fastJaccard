@@ -3,7 +3,7 @@
     "path": "G:/My Drive/fastJaccard/src/get_jaccard_distance.cpp",
     "project_path": "src/get_jaccard_distance.cpp",
     "type": "cpp",
-    "hash": "577411807",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1684511485799.0,
@@ -12,8 +12,8 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "99,18",
-        "scrollLine": "99"
+        "cursorPosition": "0,0",
+        "scrollLine": "0"
     },
     "folds": "",
     "lastKnownWriteTime": 1684513113,
