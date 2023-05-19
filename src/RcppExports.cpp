@@ -10,6 +10,17 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// get_jaccard_distance
+NumericMatrix get_jaccard_distance(NumericMatrix mat);
+RcppExport SEXP _fastJaccard_get_jaccard_distance(SEXP matSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type mat(matSEXP);
+    rcpp_result_gen = Rcpp::wrap(get_jaccard_distance(mat));
+    return rcpp_result_gen;
+END_RCPP
+}
 // rcpp_hello_world
 List rcpp_hello_world();
 RcppExport SEXP _fastJaccard_rcpp_hello_world() {
@@ -20,21 +31,10 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// rcpp_parallel_jaccard_distance
-NumericMatrix rcpp_parallel_jaccard_distance(NumericMatrix mat);
-RcppExport SEXP _fastJaccard_rcpp_parallel_jaccard_distance(SEXP matSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericMatrix >::type mat(matSEXP);
-    rcpp_result_gen = Rcpp::wrap(rcpp_parallel_jaccard_distance(mat));
-    return rcpp_result_gen;
-END_RCPP
-}
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_fastJaccard_get_jaccard_distance", (DL_FUNC) &_fastJaccard_get_jaccard_distance, 1},
     {"_fastJaccard_rcpp_hello_world", (DL_FUNC) &_fastJaccard_rcpp_hello_world, 0},
-    {"_fastJaccard_rcpp_parallel_jaccard_distance", (DL_FUNC) &_fastJaccard_rcpp_parallel_jaccard_distance, 1},
     {NULL, NULL, 0}
 };
 

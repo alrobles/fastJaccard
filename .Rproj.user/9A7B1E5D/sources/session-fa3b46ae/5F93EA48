@@ -1,9 +1,9 @@
 {
     "id": "5F93EA48",
-    "path": "G:/My Drive/fastJaccard/src/rcpp_parallel_jaccard_distance.cpp",
-    "project_path": "src/rcpp_parallel_jaccard_distance.cpp",
+    "path": "G:/My Drive/fastJaccard/src/get_jaccard_distance.cpp",
+    "project_path": "src/get_jaccard_distance.cpp",
     "type": "cpp",
-    "hash": "0",
+    "hash": "577411807",
     "contents": "",
     "dirty": false,
     "created": 1684511485799.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "101,39",
-        "scrollLine": "93"
+        "cursorPosition": "99,18",
+        "scrollLine": "99"
     },
     "folds": "",
-    "lastKnownWriteTime": 1684512557,
+    "lastKnownWriteTime": 1684513113,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1684512557633,
+    "last_content_update": 1684513113,
     "read_only": false,
     "read_only_alternatives": []
 }

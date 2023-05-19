@@ -97,7 +97,7 @@ struct JaccardDistance : public Worker {
 //' @param mat Binary matrix to be evaluated
 //' @return Jaccard simmilarity matrix
 // [[Rcpp::export]]
-NumericMatrix rcpp_parallel_jaccard_distance(NumericMatrix mat) {
+NumericMatrix get_jaccard_distance(NumericMatrix mat) {
   
   // allocate the matrix we will return
   NumericMatrix rmat(mat.nrow(), mat.nrow());
