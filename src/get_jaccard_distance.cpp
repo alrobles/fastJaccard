@@ -84,9 +84,12 @@ struct JaccardDistance : public Worker {
         double d1 = intersection(row1.begin(), row1.end(), row2.begin());
         double d2 = allsum(row1.begin(), row1.end(), row2.begin());
         
+        // calculate Jaccard distance
+        double d = 1 - d1/(d2 - d1);
+        
         // calculate jaccard and write to output matrix
-        rmat(i,j) = d1/(d2 - d1);
-        rmat(j,i) = d1/(d2 - d1);
+        rmat(i,j) = d;
+        rmat(j,i) = d;
       }
     }
   }
