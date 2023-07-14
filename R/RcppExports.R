@@ -6,10 +6,5 @@
 #' @param mat Binary matrix to be evaluated
 #' @return Jaccard simmilarity matrix
 get_jaccard_distance <- function(mat) {
-    .Call(`_fastJaccard_get_jaccard_distance`, mat)
+    .Call('_fastJaccard_get_jaccard_distance', PACKAGE = 'fastJaccard', mat)
 }
-
-rcpp_hello_world <- function() {
-    .Call(`_fastJaccard_rcpp_hello_world`)
-}
-

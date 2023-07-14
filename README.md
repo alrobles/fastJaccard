@@ -1,15 +1,18 @@
 
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 # fastJaccard
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-This packages its designed to run the Jaccard similarity
-for binary matrices in parallel using Rcpp and RcppParallel
+This packages its designed to run the Jaccard similarity for binary
+matrices in parallel using Rcpp and RcppParallel
 
 ## Installation
 
-You can install the development version of fastJaccard from [GitHub](https://github.com/) with:
+You can install the development version of fastJaccard from
+[GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
@@ -18,9 +21,11 @@ devtools::install_github("alrobles/fastJaccard")
 
 ## Example
 
-We can create a binary matrix as example and run against a build r basic code
+We can create a binary matrix as example and run against a build r basic
+code
 
 ### Implementation in R
+
 As a baseline we implement the Jaccard distance in plain R
 
 ``` r
@@ -40,37 +45,35 @@ jaccard_distance <- function(mat) {
     for (j in (i+1):nrow(mat)) {
       d1 = intersection(mat[i,], mat[j,])
       d2 = union(mat[i,], mat[j,])
-      res[j,i] = d1/d2
-      res[i,j] = d1/d2
+      res[j,i] = 1 - d1/d2
+      res[i,j] = 1 - d1/d2
     }
   }
   res
 }
 ```
+
 ### Benchmarks
 
 We create now a random binary matrix and run both implementations
 
+    library(fastJaccard)
+    ## basic example code
 
-```
-library(fastJaccard)
-## basic example code
+    # create a matrix
+    n = 1000
+    k = 2000
+    m = matrix(ifelse(runif(n*k) > 0.5, 1, 0), ncol = k)
 
-# create a matrix
-n = 1000
-k = 2000
-m = matrix(ifelse(runif(n*k) > 0.5, 1, 0), ncol = k)
+    # ensure that serial and parallel versions give the same result
+    r_res <- jaccard_distance(m)
+    rcpp_parallel_res <- get_jaccard_distance(m)
+    stopifnot(all(rcpp_parallel_res - r_res < 1e-10)) ## precision differences
 
-# ensure that serial and parallel versions give the same result
-r_res <- jaccard_distance(m)
-rcpp_parallel_res <- get_jaccard_distance(m)
-stopifnot(all(rcpp_parallel_res - r_res < 1e-10)) ## precision differences
-
-# compare performance
-library(rbenchmark)
-res <- benchmark(jaccard_distance(m),
-                 get_jaccard_distance(m),
-                 replications = 30,
-                 order="relative")
-res[,1:4]
-```
+    # compare performance
+    library(rbenchmark)
+    res <- benchmark(jaccard_distance(m),
+                     get_jaccard_distance(m),
+                     replications = 30,
+                     order="relative")
+    res[,1:4]
