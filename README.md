@@ -6,7 +6,8 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-This packages its designed to run the Jaccard similarity for binary matrices in parallel using Rcpp and RcppParallel
+This packages its designed to run the Jaccard similarity for binary
+matrices in parallel using Rcpp and RcppParallel
 
 ## Installation
 
@@ -44,8 +45,8 @@ jaccard_distance <- function(mat) {
     for (j in (i+1):nrow(mat)) {
       d1 = intersection(mat[i,], mat[j,])
       d2 = union(mat[i,], mat[j,])
-      res[j,i] = 1 - d1/d2
-      res[i,j] = 1 - d1/d2
+      res[j,i] = d1/d2
+      res[i,j] = d1/d2
     }
   }
   res
@@ -66,13 +67,25 @@ We create now a random binary matrix and run both implementations
 
     # ensure that serial and parallel versions give the same result
     r_res <- jaccard_distance(m)
-    rcpp_parallel_res <- get_jaccard_distance(m)
+    rcpp_parallel_res <- fastJaccard::jaccard_fast_matrix(m)
     stopifnot(all(rcpp_parallel_res - r_res < 1e-10)) ## precision differences
 
     # compare performance
     library(rbenchmark)
     res <- benchmark(jaccard_distance(m),
-                     get_jaccard_distance(m),
+                     jaccard_fast_matrix(m),
                      replications = 30,
                      order="relative")
     res[,1:4]
+
+## jaccard for pair of vectors
+
+We can also can get a Jaccard similarity for vectors
+
+``` r
+set.seed(1235)
+x = rbinom(1e6,1,.5)
+y = rbinom(1e6,1,.5)
+
+fastJaccard::jaccard_fast(x, y)
+```
