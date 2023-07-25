@@ -85,7 +85,7 @@ struct JaccardDistance : public Worker {
         double d2 = allsum(row1.begin(), row1.end(), row2.begin());
         
         // calculate Jaccard distance
-        double d = 1 - d1/(d2 - d1);
+        double d = d1/(d2 - d1);
         
         // calculate jaccard and write to output matrix
         rmat(i,j) = d;
@@ -95,12 +95,12 @@ struct JaccardDistance : public Worker {
   }
 };
 
-//' Multiplies two doubles
+//' Get Jaccard simmilarity for matrix rows
 //'
-//' @param mat Binary matrix to be evaluated
-//' @return Jaccard simmilarity matrix
+//' @param mat Binary m x n matrix to be evaluated
+//' @return Jaccard m x m simmilarity matrix
 // [[Rcpp::export]]
-NumericMatrix get_jaccard_distance(NumericMatrix mat) {
+NumericMatrix jaccard_fast_matrix(NumericMatrix mat) {
   
   // allocate the matrix we will return
   NumericMatrix rmat(mat.nrow(), mat.nrow());

@@ -10,20 +10,32 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
-// get_jaccard_distance
-NumericMatrix get_jaccard_distance(NumericMatrix mat);
-RcppExport SEXP _fastJaccard_get_jaccard_distance(SEXP matSEXP) {
+// jaccard_fast_matrix
+NumericMatrix jaccard_fast_matrix(NumericMatrix mat);
+RcppExport SEXP _fastJaccard_jaccard_fast_matrix(SEXP matSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericMatrix >::type mat(matSEXP);
-    rcpp_result_gen = Rcpp::wrap(get_jaccard_distance(mat));
+    rcpp_result_gen = Rcpp::wrap(jaccard_fast_matrix(mat));
+    return rcpp_result_gen;
+END_RCPP
+}
+// parallelVectorSum
+int parallelVectorSum(IntegerVector x);
+RcppExport SEXP _fastJaccard_parallelVectorSum(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< IntegerVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(parallelVectorSum(x));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_fastJaccard_get_jaccard_distance", (DL_FUNC) &_fastJaccard_get_jaccard_distance, 1},
+    {"_fastJaccard_jaccard_fast_matrix", (DL_FUNC) &_fastJaccard_jaccard_fast_matrix, 1},
+    {"_fastJaccard_parallelVectorSum", (DL_FUNC) &_fastJaccard_parallelVectorSum, 1},
     {NULL, NULL, 0}
 };
 

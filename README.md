@@ -6,8 +6,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-This packages its designed to run the Jaccard similarity for binary
-matrices in parallel using Rcpp and RcppParallel
+This packages its designed to run the Jaccard similarity for binary matrices in parallel using Rcpp and RcppParallel
 
 ## Installation
 
