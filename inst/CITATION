@@ -1,0 +1,10 @@
+bibentry(
+  bibtype  = "misc",
+  title    =  "fastJaccard: get Jaccard similarity for binary matrices",
+  author   =  "Angel Luis Robles Fernandez",
+  journal  =  "Github repository",
+  year     =  "2023",
+  doi      =  "10.5281/zenodo.8121170",
+  note     = "https://github.com/alrobles/fastJaccard"
+  
+)
