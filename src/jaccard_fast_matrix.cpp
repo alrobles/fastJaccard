@@ -85,7 +85,7 @@ struct JaccardDistance : public Worker {
         double d2 = allsum(row1.begin(), row1.end(), row2.begin());
         
         // calculate Jaccard distance
-        double d = d1/(d2 - d1);
+        double d = 1 - d1/(d2 - d1);
         
         // calculate jaccard and write to output matrix
         rmat(i,j) = d;
