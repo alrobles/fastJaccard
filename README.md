@@ -45,8 +45,8 @@ jaccard_distance <- function(mat) {
     for (j in (i+1):nrow(mat)) {
       d1 = intersection(mat[i,], mat[j,])
       d2 = union(mat[i,], mat[j,])
-      res[j,i] = d1/d2
-      res[i,j] = d1/d2
+      res[j,i] = 1 - d1/d2
+      res[i,j] = 1 - d1/d2
     }
   }
   res
